@@ -3,6 +3,20 @@
 Dell Generation 12 tower format server.
 
 
+## iDRAC Console
+
+This server has iDRAC 7. The console still works via Java and requires aquite obsolete version of it to run. You may not want to install such an obsolete java version in your system so you may want to use one of the following links to get a zipped non-installable distribution:
+
+* [Oracle JDK 8u421 x64 from Adobe](https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java8/java8u421/jdk/jdk-8u421-windows-x64.zip)
+* [Oracle JDK 8u421 x86 from Adobe](https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java8/java8u421/jdk/jdk-8u421-windows-i586.zip)
+
+To launch the viewer you may run the following command:
+
+```pwsh
+.\jdk1.8.0_421\bin\javaws.exe -wait '.\viewer.jnlp'
+```
+
+
 ## Life cycle updates
 
 One may find updates in the corresponding [Dell support webpage](https://www.dell.com/support/product-details/es-es/product/poweredge-t320/drivers) but they force you to manually download files and upload them to iDRAC one by one.
