@@ -17,18 +17,20 @@ This controller comes in three variants.
 
 The card can operate in either in IR or IT modes.
 
-By default, the card seems to ship an IR mode firmware and internet is full of tutorials on how to flash IT mode firmwares but before you start flashing, I would recommend you have a look at the following reddit thread:
+By default, the card seems to ship an IR mode firmware and internet is full of tutorials on how to flash IT mode firmware but before you start flashing, I would recommend you have a look at the following reddit thread:
 
 [Another Dell H200 HBA Thread - To Flash or Not to Flash - IT vs IR](https://www.reddit.com/r/homelab/comments/a4nx6u/another_dell_h200_hba_thread_to_flash_or_not_to/)
 
+Latest IR firmware has support for direct drive access and full SMART data to go through, so I would advise to stick to official Dell IR mode firmware.
 
-## Frimware flashing
+
+## Firmware flashing
 
 In case you decide to flash IT mode firmware:
 * [Flash an H200 to IT mode w/ uefi & bios boot functionality](https://www.reddit.com/r/homelab/comments/8cjdz7/tutorial_flash_an_h200_to_it_mode_w_uefi_bios/)
 
 In case you realize you want to go back to the stock firmware:
-* [Revert your Perc H310 back to it’s Dell firmware - Coment on how to revert an H200](https://techmattr.wordpress.com/2014/06/13/revert-your-perc-h310-back-to-its-dell-firmware/comment-page-1/#comment-17249)
+* [Revert your Perc H310 back to it’s Dell firmware - Comment on how to revert an H200](https://techmattr.wordpress.com/2014/06/13/revert-your-perc-h310-back-to-its-dell-firmware/comment-page-1/#comment-17249)
 
 In case things go very badly, some general documentation:
-* [Broadcom Sas2Flash Utility Quick Reference Ghide](https://docs.broadcom.com/doc/12353205)
+* [Broadcom Sas2Flash Utility Quick Reference Guide](https://docs.broadcom.com/doc/12353205)

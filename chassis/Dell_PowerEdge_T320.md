@@ -5,7 +5,7 @@ Dell Generation 12 tower format server.
 
 ## iDRAC Console
 
-This server has iDRAC 7. The console still works via Java and requires aquite obsolete version of it to run. You may not want to install such an obsolete java version in your system so you may want to use one of the following links to get a zipped non-installable distribution:
+This server has iDRAC 7. The console still works via Java and requires a quite obsolete version of it to run. You may not want to install such an obsolete java version in your system so you may want to use one of the following links to get a zipped non-installable distribution:
 
 * [Oracle JDK 8u421 x64 from Adobe](https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java8/java8u421/jdk/jdk-8u421-windows-x64.zip)
 * [Oracle JDK 8u421 x86 from Adobe](https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java8/java8u421/jdk/jdk-8u421-windows-i586.zip)
