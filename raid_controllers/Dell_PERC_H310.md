@@ -24,3 +24,9 @@ In case you realize you want to go back to the stock firmware:
 
 In case things go very badly, some general documentation:
 * [Broadcom Sas2Flash Utility Quick Reference Ghide](https://docs.broadcom.com/doc/12353205)
+
+
+## Chassis not POSTing with the H310
+
+For those that are unable to POST when an H310 is inserted into a PCI slot:
+* [Modding a Dell Perc 6 / Dell H310 / Dell H710 (other LSI 1078 or 9223-8i based) SAS Raidcontroller](https://yannickdekoeijer.blogspot.com/2012/04/modding-dell-perc-6-sas-raidcontroller.html)
