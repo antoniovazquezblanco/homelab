@@ -2,6 +2,8 @@
 
 This is a very common controller among 11th generation Dell servers. Expect good integration with Rx10 and Tx10 models. It will not be as tightly integrated in newer generations.
 
+[PERC H200 User's Guide](https://dl.dell.com/manuals/all-products/esuprt_ser_stor_net/esuprt_dell_adapters/poweredge-rc-h200_user's%20guide_en-us.pdf)
+
 This controller comes in three variants.
 
 | Model | Image                                 | Description                                   |
