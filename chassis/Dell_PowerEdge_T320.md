@@ -2,6 +2,8 @@
 
 Dell Generation 12 tower format server.
 
+![PowerEdge T320](Dell_PowerEdge_T320.png)
+
 
 ## iDRAC Console
 
