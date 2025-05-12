@@ -54,4 +54,4 @@ Cursed power cable adapters:
 * [OULLX male SATA to dual Molex](https://aliexpress.com/item/4000138991016.html)
 
 HDD controllers:
-* [Dell PERC H200](../raid_controllers/Dell_PERC_H200.md)
+* [Dell PERC H310](../raid_controllers/Dell_PERC_H310.md)
