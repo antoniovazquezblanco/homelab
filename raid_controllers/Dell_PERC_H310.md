@@ -2,6 +2,7 @@
 
 This is a very common controller among 12th generation Dell servers. Expect good integration with Rx20 and Tx20 models.
 
+[PERC H310 Spec Sheet](https://i.dell.com/sites/doccontent/shared-content/data-sheets/Documents/dell-perc-h310-spec-sheet.pdf)
 [PERC H310 User's Guide](https://dl.dell.com/manuals/common/rc_h310_h710_h710p_h810_ug_en-us.pdf)
 
 
