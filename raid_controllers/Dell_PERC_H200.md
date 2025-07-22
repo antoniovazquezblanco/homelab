@@ -21,7 +21,7 @@ By default, the card seems to ship an IR mode firmware and internet is full of t
 
 [Another Dell H200 HBA Thread - To Flash or Not to Flash - IT vs IR](https://www.reddit.com/r/homelab/comments/a4nx6u/another_dell_h200_hba_thread_to_flash_or_not_to/)
 
-Latest IR firmware has support for direct drive access and full SMART data to go through, so I would advise to stick to official Dell IR mode firmware.
+Latest IR firmware has support for direct drive access and full SMART data to go through, so I would advise to stick to official Dell IR mode firmware. A common reason to flash the IT mode is if your chassis does not support more than one IR card at the same time.
 
 
 ## Firmware flashing

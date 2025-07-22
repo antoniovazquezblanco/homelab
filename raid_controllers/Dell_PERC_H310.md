@@ -12,7 +12,7 @@ The card can operate in either in IR or IT modes.
 
 By default, the card seems to ship an IR mode and although there are plenty tutorials on how to flash IT firmwares, the support for direct mode in IR firmwares makes this practice less common when compared to the [PERC H200](Dell_PERC_H200.md).
 
-I would advise to stick to official Dell IR mode firmwares.
+I would advise to stick to official Dell IR mode firmwares unless you have a good reason to change to IT mode. A common reason to flash the IT mode is if your chassis does not support more than one IR card at the same time.
 
 
 ## Frimware flashing
