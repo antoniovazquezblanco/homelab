@@ -6,12 +6,11 @@ This is a very common controller among 11th generation Dell servers. Expect good
 
 This controller comes in three variants.
 
-| Model | Image                                 | Description                                   |
-|-------|---------------------------------------|-----------------------------------------------|
-| H200A | ![PERC H200A](Dell_PERC_H200A.png)    | Standard variant with external connectors     |
-| H200I | ![PERC H200I](Dell_PERC_H200I.png)    | Integrated variant with internal connectors   |
-| H200M | ![PERC H200M](Dell_PERC_H200M.png)    | Modular variant                               |
-
+| Model | Image                              | Description                                 |
+| ----- | ---------------------------------- | ------------------------------------------- |
+| H200A | ![PERC H200A](Dell_PERC_H200A.png) | Standard variant with external connectors   |
+| H200I | ![PERC H200I](Dell_PERC_H200I.png) | Integrated variant with internal connectors |
+| H200M | ![PERC H200M](Dell_PERC_H200M.png) | Modular variant                             |
 
 ## Modes
 
@@ -23,14 +22,16 @@ By default, the card seems to ship an IR mode firmware and internet is full of t
 
 Latest IR firmware has support for direct drive access and full SMART data to go through, so I would advise to stick to official Dell IR mode firmware. A common reason to flash the IT mode is if your chassis does not support more than one IR card at the same time.
 
-
 ## Firmware flashing
 
 In case you decide to flash IT mode firmware:
-* [Flash an H200 to IT mode w/ uefi & bios boot functionality](https://www.reddit.com/r/homelab/comments/8cjdz7/tutorial_flash_an_h200_to_it_mode_w_uefi_bios/)
+
+- [Flash an H200 to IT mode w/ uefi & bios boot functionality](https://www.reddit.com/r/homelab/comments/8cjdz7/tutorial_flash_an_h200_to_it_mode_w_uefi_bios/)
 
 In case you realize you want to go back to the stock firmware:
-* [Revert your Perc H310 back to it’s Dell firmware - Comment on how to revert an H200](https://techmattr.wordpress.com/2014/06/13/revert-your-perc-h310-back-to-its-dell-firmware/comment-page-1/#comment-17249)
+
+- [Revert your Perc H310 back to it’s Dell firmware - Comment on how to revert an H200](https://techmattr.wordpress.com/2014/06/13/revert-your-perc-h310-back-to-its-dell-firmware/comment-page-1/#comment-17249)
 
 In case things go very badly, some general documentation:
-* [Broadcom Sas2Flash Utility Quick Reference Guide](https://docs.broadcom.com/doc/12353205)
+
+- [Broadcom Sas2Flash Utility Quick Reference Guide](https://docs.broadcom.com/doc/12353205)
