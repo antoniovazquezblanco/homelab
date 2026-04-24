@@ -33,3 +33,11 @@ Go to `Boot` and place `USB Key` to boot before `Hard Disk`.
 Go to `Save & Exit` and press `Save Changes and Reset`.
 
 The Sophos should boot from USB and you may proceed with the pfSense installer.
+
+### Lower noise
+
+For those of us that do not have a dedicated room for noisy devices and that do not expose them to huge amounts of heat, fan speed profile can be tuned to prevent noise on the lowest levels of fan speeds.
+
+To do this, enter the BIOS setup by pressing `DEL` or `TAB` repeatedly after powering on the Sophos.
+
+In the BIOS menu navigate to `Advanced`, `HW Monitor Status`, `Smart Fan Mode Configuration` and tweak the table to lower PWM output on the lowest temperature profiles.
