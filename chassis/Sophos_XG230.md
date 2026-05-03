@@ -54,3 +54,7 @@ Remember to check the `Enable LCDproc service` and select the following paramete
 
 Press the save button and the LCD should be updated.
 You may configure other settings following your preferences.
+
+### Coreboot BIOS
+
+Experimental Coreboot may be found at <https://github.com/ulyssedu45/sg230>. Untested, run at your own risk.
