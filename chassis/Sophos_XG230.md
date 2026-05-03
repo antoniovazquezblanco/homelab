@@ -16,23 +16,12 @@ To do this, enter the BIOS setup by pressing `DEL` or `TAB` repeatedly after pow
 
 In the BIOS menu navigate to `Advanced`, `HW Monitor Status`, `Smart Fan Mode Configuration` and tweak the table to lower PWM output on the lowest temperature profiles.
 
-### PFSense
+### OpnSense
 
 With Sophos reaching EOL support for this devices, it may not make sense to keep the original Sophos software running.
-A good alternative candidate is PFSense community edition.
+A good alternative candidate is OPNsense.
 
-The latest pfSense Community Edition installer can be downloaded from https://www.pfsense.org/download/ but the current installer requires Internet access.
-If an offline install is needed, older ISO and memstick images are still available from community mirrors:
-
-- https://repo.ialab.dsu.edu/pfsense/
-- https://atxfiles.netgate.com/mirror/downloads/
-
-From either source, download the **memstick** (USB) **amd64** (x86_64) image (for example `pfSense-CE-memstick-<version>-amd64.img.gz`).
-
-To create the bootable USB stick decompress the `.gz` file and write the raw image to a USB stick of at least 2 GB:
-
-- **Windows**: [Rufus](https://rufus.ie/) in _DD Image_ mode, or `balenaEtcher`.
-- **Linux/macOS**: `dd if=pfSense-CE-memstick-<version>-amd64.img of=/dev/sdX bs=1M conv=sync`
+The latest OPNsense installer can be downloaded from <https://opnsense.org/download/>. A getting started guide is available at <https://opnsense.org/get-started/>.
 
 Plug in the USB stick one of the USB ports.
 
@@ -42,13 +31,14 @@ In the BIOS menu navigate to `Advanced`, `CSM Configuration`, `Boot option filte
 Go to `Boot` and place `USB Key` to boot before `Hard Disk`.
 Go to `Save & Exit` and press `Save Changes and Reset`.
 
-The Sophos should boot from USB and you may proceed with the pfSense installer.
+The Sophos should boot from USB and you may proceed with the OpnSense installer.
 
-### pfSense LCD
+### OpnSense LCD
 
-To get the LCD working we need to install LCDproc in pfSense.
-To install LCDproc, navigate to `System`, `Packages`.
-On the Available Packages tab, search for lcdproc, then follow prompts to install it.
+To get the LCD working we need to install LCDproc in OPNsense.
+Unfortunatelly, it is not yet officially supported ([See the Pull Request](https://github.com/opnsense/plugins/issues/5374)), but you can install it from [lcdproc-opnsense](https://github.com/ulyssedu45/lcdproc-opnsense). It can be downloaded from the repo releases at <https://github.com/ulyssedu45/lcdproc-opnsense/releases>.
+
+To install LCDproc, download the latest pkg, upload it to the machine and install via `pkg add file.pkg`.
 
 Once installation is complete, go to `Services`, `LCDproc` to configure the service.
 
