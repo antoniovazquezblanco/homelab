@@ -20,6 +20,8 @@ TOML format:
     crop = [x0, y0, x1, y1]           # optional
     rotate = 90                       # optional, degrees counter-clockwise: 0, 90, 180 or 270
     width = 1600                      # optional output width (after rotating), default: crop size
+    font_scale = 1.0                  # optional, multiplies label text and line sizes
+    align = "left"                    # optional label text alignment: "left" or "center"
     quality = 85                      # optional JPEG quality
 
     [[label]]
@@ -27,8 +29,10 @@ TOML format:
     box = [x0, y0, x1, y1]            # outline around the part
     at = [x, y]                       # where the label's top-left corner goes
     color = "#ffd400"
+    align = "center"                  # optional, overrides the file's align for this label
 
 Coordinates stay in source photo pixels when the image is rotated; labels are always drawn upright.
+Labels in a dark colour (such as black) get a light background so their text stays readable.
 """
 import argparse
 import tempfile
@@ -89,7 +93,7 @@ class Canvas:
 
 def draw_labels(spec, canvas):
     image = canvas.image
-    unit = image.width / 1600  # sizes below are tuned for a 1600 px wide image
+    unit = image.width / 1600 * spec.get("font_scale", 1.0)  # sizes below are tuned for a 1600 px wide image
     bold, regular = font("bold", round(26 * unit)), font("regular", round(22 * unit))
     overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
     od = ImageDraw.Draw(overlay)
@@ -102,13 +106,19 @@ def draw_labels(spec, canvas):
         x, y = canvas.at(*label["at"])
         w = max(od.textlength(t, font=f) for t, f in zip(lines, fonts)) + 24 * unit
         h = sum(heights) + 16 * unit
-        od.rounded_rectangle([x, y, x + w, y + h], radius=8 * unit, fill=(0, 0, 0, 200),
+        dark = 0.2126 * colour[0] + 0.7152 * colour[1] + 0.0722 * colour[2] < 80  # relative luminance
+        od.rounded_rectangle([x, y, x + w, y + h], radius=8 * unit,
+                             fill=(255, 255, 255, 220) if dark else (0, 0, 0, 200),
                              outline=colour + (255,), width=max(2, round(3 * unit)))
-        placed.append((colour, label["box"], (x, y, x + w, y + h), lines, fonts, heights))
+        align = label.get("align", spec.get("align", "left"))
+        if align not in ("left", "center"):
+            raise ValueError(f"align must be left or center, not {align}")
+        detail = (0, 0, 0) if dark else (255, 255, 255)
+        placed.append((colour, label["box"], (x, y, x + w, y + h), lines, fonts, heights, align, detail))
     image = Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
 
     draw = ImageDraw.Draw(image)
-    for colour, box, (lx0, ly0, lx1, ly1), lines, fonts, heights in placed:
+    for colour, box, (lx0, ly0, lx1, ly1), lines, fonts, heights, align, detail in placed:
         bx0, by0, bx1, by1 = canvas.box(*box)
         draw.rectangle([bx0, by0, bx1, by1], outline=colour, width=max(2, round(4 * unit)))
         # leader from the nearest label edge to the nearest point of the part outline
@@ -122,7 +132,8 @@ def draw_labels(spec, canvas):
             draw.ellipse([px - r, py - r, px + r, py + r], fill=colour)
         ty = ly0 + 8 * unit
         for i, (text, f, lh) in enumerate(zip(lines, fonts, heights)):
-            draw.text((lx0 + 12 * unit, ty), text, font=f, fill=colour if i == 0 else (255, 255, 255))
+            tx = lx0 + (lx1 - lx0 - draw.textlength(text, font=f)) / 2 if align == "center" else lx0 + 12 * unit
+            draw.text((tx, ty), text, font=f, fill=colour if i == 0 else detail)
             ty += lh
     return image
 

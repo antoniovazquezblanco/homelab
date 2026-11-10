@@ -1,0 +1,31 @@
+# iDRAC UART header J44. Pin 1 is the square pad.
+base = "../orig/Dell_PowerEdge_T320_iDRAC_Area.jpg"
+output = "../../chassis/Dell_PowerEdge_T320_iDRAC_UART.jpg"
+crop = [2450, 480, 3100, 800]
+width = 1000
+font_scale = 1.6
+align = "center"
+
+[[label]]
+text = ["1", "VCC"]
+box = [2894, 650, 2894, 650]
+at = [2871, 680]
+color = "#ff3030"
+
+[[label]]
+text = ["2", "RX"]
+box = [2819, 650, 2819, 650]
+at = [2801, 680]
+color = "#ff4fd8"
+
+[[label]]
+text = ["3", "TX"]
+box = [2737, 650, 2737, 650]
+at = [2720, 680]
+color = "#ff4fd8"
+
+[[label]]
+text = ["4", "GND"]
+box = [2659, 650, 2659, 650]
+at = [2635, 680]
+color = "#000000"
