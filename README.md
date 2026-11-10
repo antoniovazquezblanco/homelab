@@ -7,6 +7,7 @@ Chassis:
   * [Configuration](chassis/Dell_PowerEdge_T320_Configuration.md)
   * [Upgrades and accessories](chassis/Dell_PowerEdge_T320_Upgrades.md)
   * [Mods](chassis/Dell_PowerEdge_T320_Mods.md)
+  * [Diagnostics and repairs](chassis/Dell_PowerEdge_T320_Diagnostics.md)
 * [Sophos XG230](chassis/Sophos_XG230.md)
 
 RAID controllers:

@@ -13,3 +13,4 @@ Guides:
 - [Configuration](Dell_PowerEdge_T320_Configuration.md)
 - [Upgrades and accessories](Dell_PowerEdge_T320_Upgrades.md)
 - [Mods](Dell_PowerEdge_T320_Mods.md)
+- [Diagnostics and repairs](Dell_PowerEdge_T320_Diagnostics.md)
