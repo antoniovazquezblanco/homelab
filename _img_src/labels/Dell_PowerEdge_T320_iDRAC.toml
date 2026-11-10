@@ -1,0 +1,43 @@
+# iDRAC components on the T320 motherboard
+base = "../orig/Dell_PowerEdge_T320_Motherboard.jpg"
+output = "../../chassis/Dell_PowerEdge_T320_iDRAC.jpg"
+crop = [2080, 0, 3138, 1950]
+rotate = 90
+width = 1600
+
+[[label]]
+text = ["iDRAC UART (J44)"]
+box = [2370, 40, 2520, 75]
+at = [2323, 10]
+color = "#ff4fd8"
+
+[[label]]
+text = ["iDRAC RAM (U96)", "SK hynix H5TQ2G63BFR"]
+box = [2582, 165, 2805, 309]
+at = [2407, 439]
+color = "#00e5ff"
+
+[[label]]
+text = ["iDRAC SoC (U161)", "Renesas SH7757"]
+box = [2647, 431, 3020, 797]
+at = [2598, 480]
+color = "#ffd400"
+
+[[label]]
+text = ["LOM NIC (U147)", "Broadcom BCM5720"]
+box = [2790, 1171, 3006, 1401]
+at = [2742, 1130]
+color = "#ff8c00"
+
+[[label]]
+text = ["iDRAC eMMC (U167)", "SanDisk SDIN7DP2-4G"]
+box = [2960, 1650, 3136, 1898]
+at = [2323, 1600]
+color = "#ff3b3b"
+
+
+[[label]]
+text = ["iDRAC SPI flash (U97)", "Macronix MX25L3206E"]
+box = [2598, 1652, 2692, 1778]
+at = [2504, 1146]
+color = "#a0a0ff"
