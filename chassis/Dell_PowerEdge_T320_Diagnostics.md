@@ -47,3 +47,69 @@ It runs from standby power, so it is alive whenever the server is plugged in, ev
 4. Linux (3.4) starts the iDRAC services. They store configuration, Lifecycle Controller data and licences on ext3 partitions of the same eMMC.
 5. A 180 second watchdog resets the iDRAC if the services never come up.
 6. Meanwhile the BIOS waits for the iDRAC during POST. The iDRAC also controls the fans. When iDRAC is not running, the fans go to full speed as a failsafe.
+
+## iDRAC eMMC failure
+
+The eMMC (U167) wear out is one of the most common iDRAC failures.
+The iDRAC then hangs or reboots in a loop, the BIOS reports `iDRAC not responding` and the fans run at full speed.
+
+### Failure confirmation
+
+Connect to the [UART port](#uart-port) and plug the server in.
+U-Boot checks the eMMC in the first seconds:
+
+| Log line                                                        | Meaning                       |
+| --------------------------------------------------------------- | ----------------------------- |
+| `EMMC: ... Manufacturer ID: 45`                                 | eMMC detected (45 is SanDisk) |
+| `Card did not respond to voltage select!`, `Manufacturer ID: 0` | eMMC not answering            |
+| `mmcblk0: error -5`, `I/O error`                                | eMMC failing once Linux runs  |
+
+### Fix
+
+Replace the chip with a compatible 153-ball BGA eMMC using hot air.
+The original is a SanDisk SDIN7DP2-4G.
+It seems that similar parts in same or bigger size work.
+I got mine working with a SanDisk SDIN8DE1-8G.
+Licences and settings are lost with the old chip.
+
+After replacement, memory was not detected on its very first power-up but was fine from the next one.
+Power-cycle once more before blaming the soldering.
+
+### Validating the new chip
+
+The new chip is empty, so U-Boot breaks and stops at `iDRAC8=>`.
+Check that the chip answers before writing to it:
+
+```text
+mmc rescan 0
+mmcinfo 0
+```
+
+A good chip shows a manufacturer, a name and an 8-bit bus:
+
+```text
+Manufacturer ID: 45
+Name: DG400
+Bus Width: 8-bit
+```
+
+U-Boot cuts the name to 5 characters: `DG400` for mine, `SEM04` for the original.
+`Manufacturer ID: 0` or an error means the chip is not answering, so check the soldering.
+`Capacity: 0` is normal for chips over 2 GB.
+
+### Reflashing the firmware
+
+Reflash the firmware from the `iDRAC8=>` prompt over TFTP:
+
+1. Download your corresponding iDRAC firmware update package and decompress the exe file.
+2. In the extracted files locate `payload/firmimg.d7`.
+3. Connect a PC to the T320 LOM1, give it `192.168.0.100/24` manual IP address.
+4. In the U-Boot prompt use the command `ping 192.168.0.100` to validate that there is connectivity to the PC.
+4. Serve the file `firmimg.d7` over TFTP.
+5. At the U-Boot prompt download the image into memory with `tftp 84000000 firmimg.d7`.
+6. Validate the image in memory with `fwu check 84000000`.
+7. Flash the update to the new eMMC `fwu update 84000000` and wait for the process to finish.
+8. Unplug the server and plug it back in.
+9. U-Boot should print `Verify OS Images N-1: CRC32 OK` and boot Linux. The first boot takes about 5 minutes.
+10. Power the host on once so the BIOS gives the service tag back to the iDRAC, then import the licence in the web UI. Without it, firmware updates fail with `LIC501`.
+11. Update to the same firmware from the web UI. This fills the second firmware slot.
